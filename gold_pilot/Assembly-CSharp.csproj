@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\scr_bullet.cs" />
     <Compile Include="Assets\Scripts\scr_enemy.cs" />
+    <Compile Include="Assets\Scripts\scr_explosion.cs" />
     <Compile Include="Assets\Scripts\scr_player.cs" />
     <Compile Include="Assets\Scripts\scr_world.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">

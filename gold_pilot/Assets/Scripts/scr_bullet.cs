@@ -4,32 +4,22 @@ using UnityEngine;
 
 public class scr_bullet : MonoBehaviour
 {
-    public Sprite[] sprites;
-    SpriteRenderer r;
+    public Vector3 speed = new Vector3(0, .3f, 0);
 
-    Vector3 speed = new Vector3(0, .1f, 0);
-    public int timer = 0;
-    public int sprite_counter = 0;
-
-    Vector2 screensize = new Vector2(9, 6);
+    scr_world world;
+    Vector2 screensize;
 
     // Start is called before the first frame update
     void Start()
     {
-        r = this.GetComponent<SpriteRenderer>();
-        sprites = Resources.LoadAll<Sprite>("Sprites/spr_bullet");
+        world = GameObject.Find("Tomato").GetComponent<scr_world>();
+        screensize = new Vector2(world.screensize.x + 3, world.screensize.y + 3);
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckPos();
-
-        timer++;
-
-        sprite_counter = (timer/10)%2;
-
-        r.sprite = sprites[sprite_counter] as Sprite;
 
         this.transform.Translate(speed);
     }
@@ -38,6 +28,5 @@ public class scr_bullet : MonoBehaviour
         if (this.transform.position.x > screensize.x || this.transform.position.x < -screensize.x || this.transform.position.y > screensize.y || this.transform.position.y < -screensize.y) {
             Destroy(gameObject);
         }
-
     }
 }
